@@ -4,7 +4,9 @@ session_start();
 
 if (isset($_POST['nama']) && isset($_POST['password'])){
     $nama = htmlEntities($_POST['nama'],ENT_QUOTES);
-    $password = htmlEntities($_POST['password'],ENT_QUOTES);
+    $password = md5(htmlEntities($_POST['password'],ENT_QUOTES));
+    $email = htmlEntities($_POST['email'],ENT_QUOTES);
+    
 
     $query = "INSERT INTO `user` (nama, password,email) VALUES ('$nama', '$password','$email')";
     $result = mysqli_query($kon, $query);
@@ -53,6 +55,7 @@ if (isset($_POST['nama']) && isset($_POST['password'])){
             <button type="submit" class="btn btn-success">register</button>
             <a href="login.php" class="btn btn-danger">Back</a>
         </section>
+        </form>
     </div>
 </body>
 </html>

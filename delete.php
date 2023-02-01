@@ -1,10 +1,10 @@
 <?php 
 
-include 'koneksi.php';
+include_once 'koneksi.php';
 
-$id = $_GET['$id'];
+$id = $_GET['id'];
 
-mysqli_query($kon,"DELETE FROM todo WHERE id='$id'");
+$result = mysqli_query($kon, "DELETE FROM todo WHERE id_todo=$id");
 
 header("Location:index.php");
 ?>

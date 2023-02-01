@@ -19,9 +19,12 @@ $jumlah = mysqli_num_rows($hasil);
 		$_SESSION["password"]=$row["password"];
 	
 
-		header("Location:register.php");
+		header("Location:index.php");
 		
 	}else {
-		header("Location:index.php");
+		echo "<script>
+        alert('data user salah!')
+        window.location.href='login.php'
+        </script>";
 	}
 ?>

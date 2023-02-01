@@ -2,7 +2,7 @@
 
 include_once("koneksi.php");
 
-$result = mysqli_query($kon,"SELECT * FROM todo ORDER BY id DESC");
+$result = mysqli_query($kon,"SELECT * FROM todo ORDER BY id_todo DESC");
 ?>
 
 
@@ -24,18 +24,17 @@ $result = mysqli_query($kon,"SELECT * FROM todo ORDER BY id DESC");
     <a href="logout.php" class="btn btn-info">keluar</a><br/><br/>
     <hr>
     <div class="container">
-    <table width="50%" border="0">
+    <table width="50%" border="1">
         <tr>
             <th>id</th> <th>Todo</th> <th>status</th> <th>More</th>
         </tr>
         <?php 
         while($user = mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td>".$user['id']."</td>";
+            echo "<td>".$user['id_todo']."</td>";
             echo "<td>".$user['todo']."</td>";
             echo "<td>".$user['status']."</td>";
-            echo "<td><a href='edit.php?id=$user[id]'>Edit</a></td>"; 
-            echo "<td><a href='delete.php?id=$user[id]'>Hapus</a></td>";
+            echo "<td><a href='edit.php?id=$user[id_todo]'>Edit</a> | <a href='delete.php?id=$user[id_todo]'>Hapus</a></td>";
             echo "</tr>";
         }
         ?>

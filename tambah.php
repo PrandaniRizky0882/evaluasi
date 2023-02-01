@@ -13,12 +13,7 @@
     <br/><br/>
 
     <form action="tambah.php" method="post" name="insert">
-        <table width="50%" border="0">
-            <tr>
-                <td>id</td>
-                <td>:</td>
-                <td><input type="number" name="id" size="30" required></td>
-            </tr>
+        <table width="50%" border="1">
             <tr>
                 <td>todo</td>
                 <td>:</td>
@@ -27,7 +22,7 @@
             <tr>
                 <td>Status</td>
                 <td>:</td>
-                <td><input type="text" option="hidden" name="status" size="30" value="sedang dikerjakan" required></td>
+                <td><input type="text" class="hidden" name="status" size="30" value="sedang dikerjakan" required></td>
             </tr>
             <tr>
                 <td></td>
@@ -38,7 +33,6 @@
 
     <?php 
     if(isset($_POST['Submit'])) {
-        $id = $_POST['id'];
         $todo = $_POST['todo'];
         $status = $_POST['status'];
 
@@ -46,9 +40,14 @@
         include("koneksi.php");
 
         // memasukan data
-        $result = mysqli_query($kon,"INSERT INTO todo(id,todo,status)values('$id','$todo','$status')");
+        $result = mysqli_query($kon,"INSERT INTO todo(todo,status)values('$todo','$status')");
 
-        echo "data disave. <a href='index.php'>Kembali</a>";    
+        // echo "data disave. <a href='index.php'>Kembali</a>";
+        
+        echo "<script>
+        alert('data berhasil ditambah!')
+        window.location.href='index.php'
+        </script>";
     }
     ?>
 </body>
